@@ -1,8 +1,8 @@
 package com.chencheng.demo.Controller;
 
+import com.chencheng.demo.annotation.Name;
 import com.chencheng.demo.domain.ConfigBean;
 import com.chencheng.demo.domain.ConfigTestBean;
-import com.chencheng.demo.thread.RunnableDemo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +27,9 @@ public class UserController {
 
     private String china = "中国";
 
+    @Name("heihei")
+    private String test;
+
     @Autowired
     ConfigBean configBean;
 
@@ -35,7 +38,8 @@ public class UserController {
 
 
     UserController(){
-        System.out.println("UserController构造方法");
+
+//        System.out.println("UserController构造方法");
     }
 
     @RequestMapping("/")
@@ -46,23 +50,23 @@ public class UserController {
 //        return configBean.getName()+","+ age;
 
 //        return configBean.getName();
-
 //        return configTestBean.getNumberInRange();
 
         System.out.println(UserController.myName);
-        this.javaInnerDataType();
+//        this.javaInnerDataType();
 
         // 调用Runnable方式实现的线程
-        RunnableDemo R1 = new RunnableDemo("线程1");
-        R1.start();
+//        RunnableDemo R1 = new RunnableDemo("线程1");
+//        R1.start();
+//
+//        RunnableDemo R2 = new RunnableDemo("线程2");
+//        R2.start();
 
-        RunnableDemo R2 = new RunnableDemo("线程2");
-        R2.start();
+       // TODO 自定定义了注解Name,但是没有生效, 未能找到原因
+        // (深入Spring:自定义注解加载和使用) https://www.jianshu.com/p/7c2948f64b1c
+        System.out.println(this.test);
 
-        // 调用Thread类型方式实现的线程
-
-
-        return this.china;
+        return this.test;
     }
 
 
