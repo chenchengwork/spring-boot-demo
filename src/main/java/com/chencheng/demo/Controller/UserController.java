@@ -27,7 +27,7 @@ public class UserController {
 
     private String china = "中国";
 
-    @Name("heihei")
+    @Value("heihei")
     private String test;
 
     @Autowired
